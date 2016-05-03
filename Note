@@ -1,0 +1,29 @@
+www.pythonanywhere.com
+
+MySQL settings
+Database host address:tripplehay777.mysql.pythonanywhere-services.com
+Username:tripplehay777
+
+Your databases:
+Click a database's name to start a MySQL console logged in to it.
+
+Start a console on:tripplehay777$default
+Start a console on:tripplehay777$tutorial
+
+Password: akinakin88
+
+#AT BASH CONSOLE:
+->> mysql -utripplehay777 -htripplehay777.mysql.pythonanywhere-services.com -pakinakin88
+
+->> SHOW DATABASES;
+->> SHOW PROCESSLIST;
+->> CREATE TABLE Poll_Feeds (time int(13), retweet int(15), likes int(15), tweets varchar(200));
+->> SHOW TABLES;
+->> DESCRIBE Poll_Feeds;
+->> INSERT INTO Poll_Feeds VALUES(1460010400,244,248,"RT @LeahR77: CRUZBOTS WANT TO UNITE THE PARTY?WHAT PARTY IS THAT? IS IT THE ONE SERVING KOOL-AID?");
+->> INSERT INTO Poll_Feeds VALUES(1460010402,1208,1441,"RT @WORLDSTARVlNE: HOW DONALD TRUMP FIT IN SO WELL IN GAME OF THRONES STILL AMAZES ME");
+->> INSERT INTO Poll_Feeds VALUES(1460010402,1312,1503,"RT @Taybuggxoxo: My friend's service dog accidentally took a shit on Donald Trump's Hollywood star.\nBest thing I've seen all day.");
+->> INSERT INTO Poll_Feeds VALUES(1460010403,2466,2657,"RT @DailyRapFacts: Nipsey Hussle and YG at the \"F*CK DONALD TRUMP\" music video shoot");
+->> SELECT * FROM Poll_Feeds;
+->> UPDATE Poll_Feeds SET tweets="updated_RT @DailyRapFacts: Nipsey Hussle and YG at the \"F*CK DONALD TRUMP\" music video shoot" WHERE tweets="RT @DailyRapFacts: Nipsey Hussle and YG at the \"F*CK DONALD TRUMP\" music video shoot";
+->> DELET FROM Poll_Feeds WHERE time=1460010403 LIMIT 1;
