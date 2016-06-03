@@ -1,0 +1,134 @@
+
+
+
+Database ua_dillards;
+
+SELECT TOP 10 st.store, st.city, st.state, sks.sku, sks.cost, sku.dept, sku.size, sku.vendor, tr.quantity, tr.saledate, tr.orgprice, tr.sprice, DIFF(tr.sprice, tr.orgprice) AS profitprice, SUM(tr.amt) AS totalamount
+FROM strinfo st, skstinfo sks, skuinfo sku, trnsact tr
+WHERE sks.sku=tr.sku AND sks.store=tr.store AND st.store=tr.store
+GROUP BY st.city, st.state
+ORDER BY st.city, st.state;
+
+
+Database ua_dillards; 
+SELECT TOP 10 st.store , sks.sku , sks.cost , tr.orgprice , tr.sprice FROM strinfo st , skstinfo sks , skuinfo sku , trnsact tr WHERE sks.sku = tr.sku AND sks.store = tr.store ORDER BY st.city , st.state; 
+
+
+FIRST STEP
+
+Database ua_dillards;
+
+HELP table store_msa;
+
+SHOW table store_msa;
+
+HELP table trnsact;
+SHOW table trnsact;
+
+SELECT TOP 100 sku, store, stype, orgprice, quantity, sprice, amt
+FROM trnsact
+WHERE amt<20
+ORDER BY store ASC;
+
+
+SELECT TOP 100 sku, store, stype, orgprice, quantity, sprice, amt
+FROM trnsact
+WHERE amt BETWEEN 10 AND 60
+ORDER BY sku;
+
+
+SELECT TOP 10 sku, store, stype, orgprice, quantity, sprice, amt, saledate
+FROM trnsact
+WHERE saledate>2004-01-01
+ORDER BY sku;
+
+
+SELECT TOP 10 sku, store, stype, orgprice, quantity, sprice, amt, saledate
+FROM trnsact
+WHERE saledate>2004-01-01
+ORDER BY sku;
+
+SELECT TOP 10 *
+FROM strinfo;
+
+SELECT TOP 10 *
+FROM strinfo
+WHERE city IN ('sanford', 'lincoln', 'lake wales', 'tucson')
+ORDER BY city;
+
+
+/# Take a randomn sample of 10 rows#/
+SELECT sku, store, stype, orgprice, quantity, sprice, amt
+FROM trnsact
+WHERE amt BETWEEN 10 AND 60
+ORDER BY sku
+SAMPLE 10;
+
+/# Take a randomn sample of 0.1% rows#/
+SELECT sku, store, stype, orgprice, quantity, sprice, amt
+FROM trnsact
+WHERE amt BETWEEN 10 AND 60
+ORDER BY sku
+SAMPLE .001;
+
+
+/#Do not use double quote "", use single ''#/
+SELECT store, city, state, zip, msa
+FROM store_msa
+WHERE city LIKE '%s%'
+ORDER BY city DESC;
+
+
+
+SELECT DISTINCT brand, dept
+FROM skuinfo
+ORDER BY dept ASC;
+
+
+SELECT quantity, orgprice, sprice, amt
+FROM trnsact
+WHERE sprice<>amt
+ORDER BY store;
+
+
+SELECT quantity, orgprice, sprice, amt
+FROM trnsact
+WHERE sprice=amt
+ORDER BY store;
+
+
+SELECT quantity, orgprice, sprice, amt
+FROM trnsact
+WHERE sprice<orgprice AND quantity>1
+ORDER BY store;
+
+
+SELECT *
+FROM skstinfo
+WHERE cost=0 AND retail=0
+ORDER BY store;
+
+
+SELECT *
+FROM skstinfo
+WHERE cost>retail
+ORDER BY store;
+
+
+SELECT quantity, orgprice, sprice, amt
+FROM trnsact
+WHERE orgprice =0 AND sprice=0
+ORDER BY store;
+
+
+SELECT quantity, orgprice, sprice, amt
+FROM trnsact
+WHERE orgprice <>0 AND sprice<>0
+ORDER BY store;
+
+
+
+SELECT TOP 20 sku, store, register, amt, quantity
+FROM trnsact
+WHERE DAYNAME(saledate)="Monday"
+ORDER BY amt ASC;
