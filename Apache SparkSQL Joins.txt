@@ -1,0 +1,43 @@
+Joins
+Implicit and Explicit (deprecated)
+
+EXPLICIT SQL JOINS
+
+%sql 	SELECT S.name, E.cid 
+	FROM Students S, Enrolled E 
+	WHERE S.sid=E.sid
+
+
+
+IMPLICIT SQL JOINS
+--> Inner Join
+%sql 	SELECT S.name, E.cid 
+	FROM Students S INNER JOIN Enrolled E 
+	ON S.sid=E.sid
+or
+
+%sql 	SELECT S.name, E.cid 
+	FROM Students S JOIN Enrolled E 
+	ON S.sid=E.sid
+'''
+Return the rows that macthed same sid in S and E
+'''
+
+-->Left Outer Join
+
+%sql 	SELECT S.name, E.cid 
+	FROM Students S LEFT OUTER JOIN Enrolled E 
+	ON S.sid=E.sid
+'''
+Return the rows that macthed same sid in S only and and returns those in S but not in E
+'''
+
+-->Right Outer Join
+%sql 	SELECT S.name, E.cid 
+	FROM Students S RIGHT OUTER JOIN Enrolled E 
+	ON S.sid=E.sid
+'''
+Return the rows that macthed same sid in E only and and returns those in E but not in S
+'''
+
+https://youtu.be/vkrVorCtTjo
